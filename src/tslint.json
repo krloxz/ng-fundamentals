@@ -10,7 +10,8 @@
         "component-selector": [
             true,
             "element",
-            "events-app",
+            "events",
+            "event",
             "kebab-case"
         ]
     }
