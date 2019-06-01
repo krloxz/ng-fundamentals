@@ -1,14 +1,5 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class EventService {
-
-  getEvents(): any[] {
-    return EVENTS;
-  }
-
-}
-
 const EVENTS = [
   {
     id: 1,
@@ -315,3 +306,17 @@ const EVENTS = [
     ]
   }
 ];
+
+@Injectable()
+export class EventService {
+
+  getEvents(): any[] {
+    return EVENTS;
+  }
+
+  getEvent(id: number): any {
+    return EVENTS.find(event => event.id === id);
+  }
+
+}
+
