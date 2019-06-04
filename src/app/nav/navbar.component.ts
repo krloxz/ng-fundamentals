@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../user/auth.service';
+import { User } from '../user/user.model';
 
 @Component({
   selector: 'events-navbar',
@@ -8,5 +10,17 @@ import { Component } from '@angular/core';
   `]
 })
 export class NavBarComponent {
+
+  currentUser: User;
+
+  constructor(private authService: AuthService) {}
+
+  isAuthenticated(): boolean {
+    const isAuthenticated = this.authService.isAuthenticated();
+    if (isAuthenticated) {
+      this.currentUser = this.authService.currentUser;
+    }
+    return isAuthenticated;
+  }
 
 }

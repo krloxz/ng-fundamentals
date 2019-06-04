@@ -14,6 +14,7 @@ import { CreateEventComponent } from './events/create-event.component';
 import { EventDetailsActivator } from './events/details/event-details-activator.service';
 import { Error404Component } from './errors/error-404.component';
 import { EventListResolver } from './events/events.list-resolver.service';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { EventListResolver } from './events/events.list-resolver.service';
   providers: [
     EventService,
     ToastrService,
+    AuthService,
     EventDetailsActivator,
     EventListResolver,
     {
