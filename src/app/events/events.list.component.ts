@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
   `
 })
 export class EventsListComponent implements OnInit {
-  events: any[];
+  events: Event[];
 
   constructor(private eventService: EventService,
      private toastr: ToastrService,
