@@ -331,5 +331,10 @@ export class EventService {
     EVENTS.push(event);
   }
 
+  updateEvent(event: Event): void {
+    const index = EVENTS.findIndex(e => e.id === event.id);
+    EVENTS[index] = event;
+  }
+
 }
 
