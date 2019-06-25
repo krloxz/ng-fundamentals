@@ -18,6 +18,7 @@ import { EventListResolver } from './events/events.list-resolver.service';
 import { AuthService } from './user/auth.service';
 import { CreateSessionComponent } from './events/details/create-session.component';
 import { SessionListComponent } from './events/details/session-list.component';
+import { CollapsibleWellComponent } from './common/collapsible-well.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { SessionListComponent } from './events/details/session-list.component';
     CreateEventComponent,
     Error404Component,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   bootstrap: [EventsAppComponent],
   providers: [
