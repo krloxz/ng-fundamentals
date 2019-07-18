@@ -16,6 +16,7 @@ export class EventDetailsComponent implements OnInit {
   event: Event;
   addMode: boolean;
   filter = 'all';
+  order = 'byName';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
@@ -41,6 +42,10 @@ export class EventDetailsComponent implements OnInit {
 
   setFilter(filter: string): void {
     this.filter = filter;
+  }
+
+  setOrder(order: string): void {
+    this.order = order;
   }
 
 }
