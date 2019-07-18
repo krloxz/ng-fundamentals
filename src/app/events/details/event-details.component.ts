@@ -7,14 +7,15 @@ import { Event, Session } from '../shared/event.model';
   templateUrl: './event-details.component.html',
   styles: [`
     .container { padding-left: 20px; padding-right: 20px; }
-    .event-image { height: 100px }
-    a { cursor: pointer }
+    .event-image { height: 100px; }
+    a { cursor: pointer; }
   `]
 })
 export class EventDetailsComponent implements OnInit {
 
   event: Event;
   addMode: boolean;
+  filter = 'all';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
@@ -36,6 +37,10 @@ export class EventDetailsComponent implements OnInit {
 
   cancelAddSession(): void {
     this.addMode = false;
+  }
+
+  setFilter(filter: string): void {
+    this.filter = filter;
   }
 
 }
