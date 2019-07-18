@@ -19,6 +19,7 @@ import { AuthService } from './user/auth.service';
 import { CreateSessionComponent } from './events/details/create-session.component';
 import { SessionListComponent } from './events/details/session-list.component';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
+import { DurationPipe } from './events/shared/duration.pipe';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   bootstrap: [EventsAppComponent],
   providers: [
