@@ -13,7 +13,7 @@ import {
   CollapsibleWellComponent,
   JQ_TOKEN,
   SimpleModalComponent,
-  ModalTriggerDirective} from './common/index';
+  ModalTriggerDirective } from './common/index';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { EventDetailsComponent } from './events/details/event-details.component';
@@ -25,6 +25,8 @@ import { AuthService } from './user/auth.service';
 import { CreateSessionComponent } from './events/details/create-session.component';
 import { SessionListComponent } from './events/details/session-list.component';
 import { DurationPipe } from './events/shared/duration.pipe';
+import { UpvoteComponent } from './events/details/upvote.component';
+import { VoterService } from './events/details/voter.service';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -49,7 +51,8 @@ const jQuery = window['$'];
     CollapsibleWellComponent,
     SimpleModalComponent,
     ModalTriggerDirective,
-    DurationPipe
+    DurationPipe,
+    UpvoteComponent
   ],
   bootstrap: [EventsAppComponent],
   providers: [
@@ -57,6 +60,7 @@ const jQuery = window['$'];
     AuthService,
     EventDetailsActivator,
     EventListResolver,
+    VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
