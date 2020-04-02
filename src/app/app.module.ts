@@ -27,6 +27,7 @@ import { SessionListComponent } from './events/details/session-list.component';
 import { DurationPipe } from './events/shared/duration.pipe';
 import { UpvoteComponent } from './events/details/upvote.component';
 import { VoterService } from './events/details/voter.service';
+import { LocationValidator } from './events/location-validator.directive';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -52,7 +53,8 @@ const jQuery = window['$'];
     SimpleModalComponent,
     ModalTriggerDirective,
     DurationPipe,
-    UpvoteComponent
+    UpvoteComponent,
+    LocationValidator
   ],
   bootstrap: [EventsAppComponent],
   providers: [
