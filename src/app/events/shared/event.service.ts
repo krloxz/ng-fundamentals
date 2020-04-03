@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Event, Session } from './event.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
 const EVENTS: Event[] = [
@@ -326,15 +326,10 @@ export class EventService {
       .pipe(catchError(this.handleError<Event>('getEvent')));
   }
 
-  saveEvent(event: Event): void {
-    event.id = 999;
-    event.sessions = [];
-    EVENTS.push(event);
-  }
-
-  updateEvent(event: Event): void {
-    const index = EVENTS.findIndex(e => e.id === event.id);
-    EVENTS[index] = event;
+  saveEvent(event: Event): Observable<Event> {
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.post<Event>('/api/events', event, options)
+      .pipe(catchError(this.handleError<Event>('saveEvent')));
   }
 
   searchSessions(searchTerm: string): Observable<Session[]> {
