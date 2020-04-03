@@ -18,7 +18,6 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { EventDetailsComponent } from './events/details/event-details.component';
 import { CreateEventComponent } from './events/create-event.component';
-import { EventDetailsActivator } from './events/details/event-details-activator.service';
 import { Error404Component } from './errors/error-404.component';
 import { EventListResolver } from './events/events.list-resolver.service';
 import { AuthService } from './user/auth.service';
@@ -29,6 +28,7 @@ import { UpvoteComponent } from './events/details/upvote.component';
 import { VoterService } from './events/details/voter.service';
 import { LocationValidator } from './events/location-validator.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { EventResolver } from './events/event-resolver';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -62,8 +62,8 @@ const jQuery = window['$'];
   providers: [
     EventService,
     AuthService,
-    EventDetailsActivator,
     EventListResolver,
+    EventResolver,
     VoterService,
     {
       provide: 'canDeactivateCreateEvent',

@@ -1,6 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Event, Session } from './event.model';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 const EVENTS: Event[] = [
   {
@@ -312,17 +314,16 @@ const EVENTS: Event[] = [
 @Injectable()
 export class EventService {
 
+  constructor(private http: HttpClient) {}
+
   getEvents(): Observable<Event[]> {
-    const subject = new Subject<Event[]>();
-    setTimeout(() => {
-      subject.next(EVENTS);
-      subject.complete();
-    }, 100);
-    return subject;
+    return this.http.get<Event[]>('/api/events')
+      .pipe(catchError(this.handleError<Event[]>('getEvents', [])));
   }
 
-  getEvent(id: number): Event {
-    return EVENTS.find(event => event.id === id);
+  getEvent(id: number): Observable<Event> {
+    return this.http.get<Event>('/api/events/' + id)
+      .pipe(catchError(this.handleError<Event>('getEvent')));
   }
 
   saveEvent(event: Event): void {
@@ -355,5 +356,11 @@ export class EventService {
     return emitter;
   }
 
-}
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.log(error);
+      return of(result as T);
+    };
+  }
 
+}

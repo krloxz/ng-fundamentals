@@ -11,7 +11,7 @@ export class EventListResolver implements Resolve<any[]> {
   constructor(private eventService: EventService) { }
 
   resolve(): Observable<Event[]> {
-    return this.eventService.getEvents().pipe(map(events => events));
+    return this.eventService.getEvents();
   }
 
 }
