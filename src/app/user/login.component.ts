@@ -9,16 +9,22 @@ import { Router } from '@angular/router';
   `]
 })
 export class LoginComponent {
-
   userName: string;
   password: string;
   mouseOverLogin: boolean;
+  invalidLogin = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   login(form: any): void {
-    this.authService.login(form.userName, form.password);
-    this.router.navigate(['/events']);
+    this.authService.login(form.userName, form.password)
+      .subscribe(success => {
+        if (!success) {
+          this.invalidLogin = true;
+        } else {
+          this.router.navigate(['/events']);
+        }
+      });
   }
 
   cancel(): void {
