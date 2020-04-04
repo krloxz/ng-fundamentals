@@ -17,7 +17,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   `
 })
 export class UpvoteComponent {
-  private iconColor: string;
+  iconColor: string;
   @Input() count: number;
   @Output() vote = new EventEmitter<any>();
   @Input() set voted(val: boolean) {
