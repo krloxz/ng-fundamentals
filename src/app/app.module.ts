@@ -14,7 +14,7 @@ import {
   JQ_TOKEN,
   SimpleModalComponent,
   ModalTriggerDirective } from './common/index';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { EventDetailsComponent } from './events/details/event-details.component';
 import { CreateEventComponent } from './events/create-event.component';
@@ -38,7 +38,7 @@ const jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }),
     HttpClientModule
   ],
   declarations: [
